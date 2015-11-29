@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <head>
+    <title>Clubs Evaluation Form</title>
+  </head>
+  <body>
+    <!--{% for greeting in greetings %}
+      {% if greeting.author %}
+        <b>{{ greeting.author.email }}
+          {% if user and user.user_id() == greeting.author.identity %}
+            (You)
+          {% endif %}
+        </b> wrote:
+      {% else %}
+       An anonymous person wrote:
+      {% endif %}
+      <blockquote>{{ greeting.content }}</blockquote>
+    {% endfor %}-->
+
+    <!-- Search box for clubs -->
+
+    <!-- Link to let the user login to their account-->
+    <a href="{{ url|safe }}">{{ url_linktext }}</a>
+    <form>Your name:
+      <input value="{{ guestbook_name }}" name="guestbook_name">
+      <input type="submit" value="switch">
+    </form>
+    <hr>
+    <form action="/sign?guestbook_name={{ guestbook_name }}" method="post">
+      <div><textarea name="name" placeholder="Club Name" rows="1" cols="60"></textarea></div>
+      <div><textarea name="time" placeholder="Club Meeting Time" rows="1" cols="60"></textarea></div>
+      <div><textarea name="place" placeholder="Club Meeting Place" rows="1" cols="60"></textarea></div>
+      <!-- radio button code from: http://www.echoecho.com/htmlforms10.htm-->
+      <div><h11>Club ratings from 1 - 5</h11>
+        <input type="radio" name="group1" value="1">      1(Worst)
+        <input type="radio" name="group1" value="2"> 2
+        <input type="radio" name="group1" value="3"> 3
+        <input type="radio" name="group1" value="4"> 4
+        <input type="radio" name="group1" value="5" checked> 5(Best)
+      </div>
+      <div><h11>Club Workload</h11>
+        <input type="radio" name="group2" value="1"> 1-5 hours/week
+        <input type="radio" name="group2" value="2"> 6-10 hours/week
+        <input type="radio" name="group2" value="3"> 11-15 hours/week
+        <input type="radio" name="group2" value="4"> 15-20 hours/week
+        <input type="radio" name="group2" value="5" checked> 20+ hours/week
+      </div>
+      <div><h11>Recommend to friend?</h11>
+        <input type="radio" name="group3" value="1"> Yes
+        <input type="radio" name="group3" value="0" checked> No
+      </div>
+      <div><input type="submit" value="Submit Club Evaluations"></div>
+    </form>
+    <hr>
+  </body>
+  <footer>
+  <p>Brought to you by: Laan Yeung, Jake Mathahs, Ted Zhu
+  <br><a href="templates/about.html">About</a> | CS50 2015 FALL</p>
+</footer>
+</html>
+{% endautoescape %}
