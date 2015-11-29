@@ -18,8 +18,10 @@
       <blockquote>{{ greeting.content }}</blockquote>
     {% endfor %}-->
 
-    <!-- Search box for clubs -->
-
+    <!-- Search box for clubs: http://www.textfixer.com/tutorials/html-search-box.php-->
+		<form id="search" method="post">
+		        <input type="text" class="tftextinput" name="q" placeholder="search a club for its evaluation" size="30" maxlength="120"><input type="submit" value="search" class="tfbutton">
+		</form>
     <!-- Link to let the user login to their account-->
     <a href="{{ url|safe }}">{{ url_linktext }}</a>
     <form>Your name:
@@ -55,8 +57,8 @@
     <hr>
   </body>
   <footer>
-  <p>Brought to you by: Laan Yeung, Jake Mathahs, Ted Zhu
-  <br><a href="templates/about.html">About</a> | CS50 2015 FALL</p>
+  <p>Brought to you by: Laan(Rainbow) Yeung, Jake Mathahs, Ted Zhu
+  <br><a href="/about">About</a> | CS50 2015 FALL</p>
 </footer>
 </html>
 {% endautoescape %}

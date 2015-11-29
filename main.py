@@ -49,7 +49,7 @@ class Author(ndb.Model):
     identity = ndb.StringProperty(indexed=False)
     email = ndb.StringProperty(indexed=False)
 
-
+# reference link: https://cloud.google.com/appengine/docs/python/ndb/properties
 class Greeting(ndb.Model):
     """A main model for representing an individual Guestbook entry."""
     author = ndb.StructuredProperty(Author)
@@ -119,7 +119,18 @@ class Guestbook(webapp2.RequestHandler):
         query_params = {'guestbook_name': guestbook_name}
         self.redirect('/?' + urllib.urlencode(query_params))
 
+class AboutPage(webapp2.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+        if users.get_current_user():
+            template_values = {
+                'user': user
+            }
+            template= JINJA_ENVIRONMENT.get_template('templates/about.html')
+            self.response.write(template.render(template_values))
+
 app = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/sign', Guestbook),
+    ('/about', AboutPage)
 ], debug=True)
