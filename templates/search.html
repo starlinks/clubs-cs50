@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{%autoescape true %}
+<html>
+  <head>
+    <title>Search Results</title>
+  </head>
+  <body>
+    <h1>Search Results</h1>
+    {% for greeting in greetings %}
+      {% if greeting.author %}
+        <b>{{ greeting.author.email }}
+          {% if user and user.user_id() == greeting.author.identity %}
+            (You)
+          {% endif %}
+        </b> evaluated these following clubs on {{greeting.date}}:
+      {% else %}
+       An anonymous person evaluated these following clubs:
+      {% endif %}
+      <blockquote>{{ greeting.name }}
+      <br>{{greeting.place}}
+      <br>{{greeting.time}}</blockquote>
+    {% endfor %}
+  </body>
+  <footer>
+  </footer>
+</html>
+{% endautoescape %}

@@ -5,31 +5,18 @@
     <title>Clubs Evaluation Form</title>
   </head>
   <body>
-    <!--{% for greeting in greetings %}
-      {% if greeting.author %}
-        <b>{{ greeting.author.email }}
-          {% if user and user.user_id() == greeting.author.identity %}
-            (You)
-          {% endif %}
-        </b> wrote:
-      {% else %}
-       An anonymous person wrote:
-      {% endif %}
-      <blockquote>{{ greeting.content }}</blockquote>
-    {% endfor %}-->
-
-    <!-- Search box for clubs: http://www.textfixer.com/tutorials/html-search-box.php-->
+<!-- Search box for clubs: http://www.textfixer.com/tutorials/html-search-box.php-->
 		<form id="search" method="post">
 		        <input type="text" class="tftextinput" name="q" placeholder="search a club for its evaluation" size="30" maxlength="120"><input type="submit" value="search" class="tfbutton">
 		</form>
     <!-- Link to let the user login to their account-->
     <a href="{{ url|safe }}">{{ url_linktext }}</a>
     <form>Your name:
-      <input value="{{ guestbook_name }}" name="guestbook_name">
+      <input value="{{ guestbook_identity }}" name="guestbook_identity">
       <input type="submit" value="switch">
     </form>
     <hr>
-    <form action="/sign?guestbook_name={{ guestbook_name }}" method="post">
+    <form action="/sign?guestbook_identity={{ guestbook_identity }}" method="post">
       <div><textarea name="name" placeholder="Club Name" rows="1" cols="60"></textarea></div>
       <div><textarea name="time" placeholder="Club Meeting Time" rows="1" cols="60"></textarea></div>
       <div><textarea name="place" placeholder="Club Meeting Place" rows="1" cols="60"></textarea></div>
