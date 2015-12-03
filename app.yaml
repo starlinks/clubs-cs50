@@ -5,12 +5,21 @@ api_version: 1
 threadsafe: yes
 
 handlers:
+
 - url: /favicon\.ico
   static_files: favicon.ico
   upload: favicon\.ico
 
 - url: .*
   script: main.app
+
+- url: /_ah/login_required
+  script: do_openid_login.app
+
+- url: /youraccount/.*
+  script: accounts.app
+  login: required
+  secure: always
 
 libraries:
 - name: webapp2

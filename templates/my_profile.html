@@ -1,0 +1,28 @@
+<!DOCTYPE.html>
+<html>
+  <head>
+    <title>User Info</title>
+  </head>
+  <body>
+    {% include 'templates/user.html' %}
+    </p>
+    <br>
+    <h3>Name: {{name}}</h3>
+    <h3>Email: {{email}}</h3>
+    <h3>Class Year: {{year}}</h3>
+    <h3>Bio: {{bio}}</h3> <br>
+    <h2>The following are the clubs evaluation you have submitted!</h2>
+
+    {% for person in people %}
+      {% if person.author %}
+        <b>{{ person.author.email }}
+          {% if user and user.user_id() == person.author.identity %}
+            (You)
+          {% endif %}
+      {% endif %}
+      <blockquote>{{ person.name }}
+      <br>{{person.place}}
+      <br>{{person.time}}</blockquote>
+    {% endfor %}
+  </body>
+</html>

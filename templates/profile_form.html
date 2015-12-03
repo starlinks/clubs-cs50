@@ -1,0 +1,20 @@
+<!DOCTYPE.html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/static/mastercss.css">
+    <title>Create New Events</title>
+  </head>
+  <body>
+    {% include 'templates/user.html' %}
+    <h1><a href='/' style="color:white; text-decoration: none">The Event Horizon</a></h1>
+    <br>
+    <form method = "post">
+      <pre>
+      Enter your preferred name <input type="text" name="person_name">
+      Enter your class year <input type="text" name="number">
+      <textarea name="bio" rows="10" cols="51"> Enter a short bio here. </textarea>
+      <input type = "submit">
+    </pre>
+    </form>
+  </body>
+</html>

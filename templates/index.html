@@ -2,50 +2,205 @@
 {% autoescape true %}
 <html>
   <head>
+    <!--picture from http://www.freeimages.com/image/architecture/4-->
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     <title>Clubs Evaluation Form</title>
-  </head>
-  <body>
-<!-- Search box for clubs: http://www.textfixer.com/tutorials/html-search-box.php-->
-		<form id="search" method="post">
-		        <input type="text" class="tftextinput" name="q" placeholder="search a club for its evaluation" size="30" maxlength="120"><input type="submit" value="search" class="tfbutton">
-		</form>
-    <!-- Link to let the user login to their account-->
+    <style type="text/css">
+    body{
+      font-size: 20px;
+      background-image: url("http://images.freeimages.com/images/thumbs/239/brooklyn-bridge-2-1170781.jpg");
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: right top;
+      background-attachment: fixed;
+
+    }
+    #search{
+      text-align: left;
+      font-size: 18px;
+    }
+    form input[type="text"] {
+      height: 28px;
+      width: 300px;
+      margin: 0;
+      padding: 0;
+      font-size: 15px;
+      border: 1px solid #CCCCCC;
+    }
+
+    form input[type="submit"] {
+      height: 28px;
+      width: 80px;
+      margin: 0;
+      padding: 0;
+      font-size: 15px;
+      background-color: #FFFFFF;
+      border: 1px solid #CCCCCC;
+    }
+    ::-webkit-input-placeholder {
+      font-size: 14px;
+      color: gray;
+      text-transform: uppercase;
+      text-transform: uppercase;
+      text-align: left;
+      font-weight: bold;
+    }
+    #workload{
+      text-align: center;
+      background-color: #FF6942;
+    }
+    #rec{
+      text-align: center;
+      background-color: lightblue;
+    }
+    #comp{
+      text-align: center;
+      background-color: #4232ff;
+    }
+    html *
+    {
+    font-size: 1.01em !important;
+    color: #000 !important;
+    font-family: 'Raleway', sans-serif; !important;
+    }
+    #header{
+      background-color: white;
+      text-align: right;
+      padding-right: 8px;
+      background-color: lightblue;
+      opacity: 0.6;
+      filter: alpha(opacity=60); /* For IE8 and earlier */
+      margin: 5%;
+      font-weight: bold;
+      color: lightblue;
+    }
+    #content{
+      background-color: #ffffff;
+      solid black;
+      opacity: 0.8;
+      filter: alpha(opacity=60); /* For IE8 and earlier */
+      margin: 5%;
+      font-weight: bold;
+      color: #000000;
+      padding-left: 8px;
+      text-align: center;
+    }
+
+    #tfheader{
+      background-color:#c3dfef;
+    }
+    #tfnewsearch{
+      float: right;
+    }
+    .tftextinput{
+      margin: 0;
+      padding: 5px 15px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size:14px;
+      border:1px solid #0076a3; border-right:0px;
+      border-top-left-radius: 5px 5px;
+      border-bottom-left-radius: 5px 5px;
+    }
+    .tfbutton {
+      margin: 0;
+      padding: 5px 15px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size:14px;
+      outline: none;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      color: #ffffff;
+      border: solid 1px #0076a3; border-right:0px;
+      background: #0095cd;
+      background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+      background: -moz-linear-gradient(top,  #00adee,  #0078a5);
+      border-top-right-radius: 5px 5px;
+      border-bottom-right-radius: 5px 5px;
+    }
+    .tfbutton:hover {
+      text-decoration: none;
+      background: #007ead;
+      background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
+      background: -moz-linear-gradient(top,  #0095cc,  #00678e);
+    }
+    /* Fixes submit button height problem in Firefox */
+    .tfbutton::-moz-focus-inner {
+      border: 0;
+    }
+    .tfclear{
+      clear:both;
+    }
+  </style>
+
+  <!-- Link to let the user login to their account-->
+  <div id="header">
     <a href="{{ url|safe }}">{{ url_linktext }}</a>
-    <form>Your name:
+    <form>Your Identifier:
       <input value="{{ guestbook_identity }}" name="guestbook_identity">
       <input type="submit" value="switch">
     </form>
+    <!-- CSS styles for standard search box -->
+  </head>
+  <body>
+    <div id="tfheader">
+      <form id="tfnewsearch" method="get" action="http://www.google.com">
+        <input type="text" class="tftextinput" name="q" placeholder="Search for a club" size="21" maxlength="120"><input type="submit" value="search" class="tfbutton">
+      </form>
+    <div class="tfclear"></div>
+    </div>
+  </div>
+  <div id="content">
+  <a href="https://clubs-cs50.appspot.com/profile">My Profile</a>
     <hr>
-    <form action="/sign?guestbook_identity={{ guestbook_identity }}" method="post">
-      <div><textarea name="name" placeholder="Club Name" rows="1" cols="60"></textarea></div>
-      <div><textarea name="time" placeholder="Club Meeting Time" rows="1" cols="60"></textarea></div>
-      <div><textarea name="place" placeholder="Club Meeting Place" rows="1" cols="60"></textarea></div>
+    <form id="inputs" action="/sign?guestbook_name={{ guestbook_name }}" method="post">
+      <h9>Club Name (Please enter it exactly as it appears in <a href="http://osl.fas.harvard.edu/student-organizations">This Link</a>)</h9>
+      <div><textarea name="name" placeholder="Mock Trial" rows="2" cols="60"></textarea></div>
+      <h9>Club Meeting Time</h9>
+      <div><textarea name="time" placeholder="Noon, Tuesday and Thursday." rows="2" cols="60"></textarea></div>
+      <h9>Club Meeting Place (If Applicable)</h9>
+      <div><textarea name="place" placeholder="Adams House" rows="2" cols="60"></textarea></div>
+      <h9>Who Would You Recommend this Club To?</h9>
+      <div><textarea name="rec" placeholder="This club is good for people who like law" rows="6" cols="60"></textarea></div>
+      <h9>Any Other Comments?</h9>
+      <div><textarea name="other" placeholder="One of the captains regularly smells like a walrus" rows="6" cols="60"></textarea></div>
       <!-- radio button code from: http://www.echoecho.com/htmlforms10.htm-->
-      <div><h11>Club ratings from 1 - 5</h11>
+      <div id="rec"><h7><strong>How highly would you recommend this club?</strong></h7><br>
         <input type="radio" name="group1" value="1">      1(Worst)
         <input type="radio" name="group1" value="2"> 2
         <input type="radio" name="group1" value="3"> 3
         <input type="radio" name="group1" value="4"> 4
         <input type="radio" name="group1" value="5" checked> 5(Best)
       </div>
-      <div><h11>Club Workload</h11>
-        <input type="radio" name="group2" value="1"> 1-5 hours/week
-        <input type="radio" name="group2" value="2"> 6-10 hours/week
-        <input type="radio" name="group2" value="3"> 11-15 hours/week
-        <input type="radio" name="group2" value="4"> 15-20 hours/week
-        <input type="radio" name="group2" value="5" checked> 20+ hours/week
+      <div id="workload"><h9><strong>Club Workload</strong></h9><br>
+        <input type="radio" name="group2" value="1"> 1-3 hours/week
+        <input type="radio" name="group2" value="2"> 4-7 hours/week
+        <input type="radio" name="group2" value="3"> 8-11 hours/week
+        <input type="radio" name="group2" value="4"> 11-15 hours/week
+        <input type="radio" name="group2" value="5" checked> 15+ hours/week
       </div>
-      <div><h11>Recommend to friend?</h11>
-        <input type="radio" name="group3" value="1"> Yes
-        <input type="radio" name="group3" value="0" checked> No
+      <div id="comp"><h9><strong>How Competitive is the Comp?</strong></h9><br>
+        <input type="radio" name="group3" value="1"> No Comp/All Accepted
+        <input type="radio" name="group3" value="2"> 80% Accepted
+        <input type="radio" name="group3" value="3"> 50% Accepted
+        <input type="radio" name="group3" value="4"> 25% Accepted
+        <input type="radio" name="group3" value="5" checked> 10% Accepted
       </div>
-      <div><input type="submit" value="Submit Club Evaluations"></div>
+      <div><h9><strong>Is it Entirely Student Run?</strong></>
+        <input type="radio" name="group4" value="1"> Yes
+        <input type="radio" name="group4" value="0" checked> No
+      </div>
+      <div><input type="submit" value="Submit"></div>
     </form>
     <hr>
   </body>
-  <footer>
-  <p>Brought to you by: Laan(Rainbow) Yeung, Jake Mathahs, Ted Zhu
+</div>
+  <div id="footer">
+  <p>Brought to you by: Laan(Rainbow) Yeung,  Jake Mathahs,  Ted Zhu
   <br><a href="/about">About</a> | CS50 2015 FALL</p>
-</footer>
+</div>
 </html>
 {% endautoescape %}
