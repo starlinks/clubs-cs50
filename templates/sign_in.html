@@ -1,7 +1,71 @@
 <!DOCTYPE html>
-<body>
-  <br>
-  <h2>Welcome to Clubs@CS50</h2>
-  <h3>Enjoy the Q Guide, made for clubs.</h3>
-  <h4>{% include 'templates/user.html' %}</h4>
-</body>
+<html>
+ 	<head>
+ 	<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+ 	<style>
+  	body {
+  	font-family: 'Raleway', sans-serif;
+  	background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Harvard_square_harvard_yard.JPG/1920px-Harvard_square_harvard_yard.JPG");
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: right top;
+      background-attachment: fixed;
+  	}
+
+	div.transbox {
+	  margin: 45px;
+	  background-color: #ffffff;
+	  border: 0.5px solid black;
+	  opacity: 0.6;
+	  filter: alpha(opacity=60); /* For IE8 and earlier */
+	  padding: 50px;
+	}
+	html *
+	    {
+	    color: #000;
+	    font-family: 'Raleway', sans-serif;
+	}
+	div.transbox p {
+	  margin: 3%;
+	  font-weight: bold;
+	  color: #000000;
+	}
+	div.transbox_footer {
+	  margin: 45px;
+	  background-color: #ffffff;
+	  border: 0.5px solid black;
+	  opacity: 0.6;
+	  filter: alpha(opacity=60); /* For IE8 and earlier */
+	  padding: 20px;
+	}
+
+	div.transbox_footer p {
+	  margin: 3%;
+	  font-weight: bold;
+	  color: #000000;
+	}
+	</style>
+    <title>Clubs Evaluation Form</title>
+	</head>
+	<body>
+		<div class="background">
+    	<div class="transbox">
+    		<br>
+	  		<h1>Welcome to Clubs@CS50</h1>
+	  		<h3>Enjoy the Q Guide, made for clubs.</h3>
+	  		<h4>{% include 'templates/user.html' %}</h4>
+    </div>
+  </div>
+  </body>
+ <div class="background_footer">
+    <div class="transbox_footer">
+ 	<footer>
+  <p>Brought to you by: Laan (Rainbow) Yeung, Jake Mathahs, Ted Zhu
+  <br> <p><a href="https://clubs-cs50.appspot.com/about">About</a> | CS50 2015 FALL</p>
+	</footer>
+	</div>
+</div>
+</html>
