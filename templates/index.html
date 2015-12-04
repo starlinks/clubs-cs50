@@ -5,22 +5,14 @@
     <!--picture from http://www.freeimages.com/image/architecture/4-->
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     <title>Clubs Evaluation Form</title>
-    <style type="text/css">
+    <style>
     body{
-      font-size: 20px;
+      margin: 0;
       background-image: url("http://images.freeimages.com/images/thumbs/239/brooklyn-bridge-2-1170781.jpg");
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
       background-size: cover;
       background-repeat: no-repeat;
       background-position: right top;
       background-attachment: fixed;
-
-    }
-    #search{
-      text-align: left;
-      font-size: 18px;
     }
     form input[type="text"] {
       height: 28px;
@@ -48,41 +40,29 @@
       text-align: left;
       font-weight: bold;
     }
-    #workload{
-      text-align: center;
-      background-color: #FF6942;
-    }
-    #rec{
-      text-align: center;
-      background-color: lightblue;
-    }
-    #comp{
-      text-align: center;
-      background-color: #4232ff;
-    }
     html *
     {
     font-size: 1.01em !important;
     color: #000 !important;
     font-family: 'Raleway', sans-serif; !important;
     }
-    #header{
+    .header{
+      position: fixed;
+      z-index: 3;
+      width: 100%;
+      top: 0%;
+      margin-top: 0;
       background-color: white;
-      text-align: right;
-      padding-right: 8px;
       background-color: lightblue;
-      opacity: 0.6;
-      filter: alpha(opacity=60); /* For IE8 and earlier */
-      margin: 5%;
+      opacity: 1;
       font-weight: bold;
       color: lightblue;
     }
     #content{
       background-color: #ffffff;
-      solid black;
+      margin-top: 100px;
       opacity: 0.8;
       filter: alpha(opacity=60); /* For IE8 and earlier */
-      margin: 5%;
       font-weight: bold;
       color: #000000;
       padding-left: 8px;
@@ -137,7 +117,7 @@
   </style>
 
   <!-- Link to let the user login to their account-->
-  <div id="header">
+  <div class="header">
     <a href="{{ url|safe }}">{{ url_linktext }}</a>
     <form>Your Identifier:
       <input value="{{ guestbook_identity }}" name="guestbook_identity">

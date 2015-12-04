@@ -12,8 +12,8 @@
     <h3>Class Year: {{year}}</h3>
     <h3>Bio: {{bio}}</h3> <br>
     <h2>The following are the clubs evaluation you have submitted!</h2>
-
-    {% for person in people %}
+    {{results}}
+    <!--{% for person in people %}
       {% if person.author %}
         <b>{{ person.author.email }}
           {% if user and user.user_id() == person.author.identity %}
@@ -21,8 +21,8 @@
           {% endif %}
       {% endif %}
       <blockquote>{{ person.name }}
-      <br>{{person.place}}
-      <br>{{person.time}}</blockquote>
-    {% endfor %}
+      <br>{{person.year}}
+      <br>{{person.bio}}</blockquote>
+    {% endfor %}-->
   </body>
 </html>
