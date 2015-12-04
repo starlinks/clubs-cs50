@@ -1,7 +1,80 @@
 <!DOCTYPE html>
 <head>
-  <title>About</title>
+  <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+  <style>
+  /* create fixed background image*/
+  body {
+  	font-size: 20px;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Harvard_square_harvard_yard.JPG/1920px-Harvard_square_harvard_yard.JPG");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-attachment: fixed;
+  }
+  html * {
+    color: #000;
+    font-family: 'Raleway', sans-serif;
+  }
+  div.transbox {
+    margin: 45px;
+    background-color: #ffffff;
+    border: 1px solid black;
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+  }
+  div.transbox p {
+    margin: 5%;
+    font-weight: bold;
+    color: #000000;
+  }
+  div.transbox_footer {
+    margin: 45px;
+    background-color: #ffffff;
+    border: 0.5px solid black;
+    opacity: 0.6;
+    filter: alpha(opacity=60); /* For IE8 and earlier */
+    padding: 28px;
+  }
+  div.transbox_footer p {
+    margin: 3%;
+    font-weight: bold;
+    color: #000000;
+  }
+  </style>
+<title>About</title>
 </head>
 <body>
-  <p>HAI</p>
+<div class="background">
+	<div class="transbox">
+		<h1>About</h1>
+		<h3>Goal</h3>
+		<p>How do Harvard students choose which clubs to join?</p>
+		<p>Hearsay? Reputation? Food-filled information sessions that promise glory?</p>
+		<p>Our goal is to provide a comprehensive platform for students to provide feedback about and learn about clubs on campus, so that we can be better informed in our decision making process.</p>
+	<!-- INSERT SCREENSHOT OF CLUB RATINGS HERE TO SHOW PEOPLE-->
+		<p><a href="/index">Create an account</a> to get started and help provide constructive feedback and advice.</p>
+		<h3 class="center">Project info</h3>
+ 		<p>Team members:</p>
+ 		<ul>
+ 			<li>Laan (Rainbow) Yeung: Backend</li>
+ 			<li>Jake Mathahs: Front end </li>
+ 			<li>Ted Zhu: Front end </li>
+ 		<!--{% for tm in team_members %}
+ 		<li>{{tm}}</li>
+ 		{% endfor %}-->
+ 		</ul>
+ 		<h7>Hosted by Google App Engine.</h7>
+ 	</div>
+ </div>
 </body>
+<div class="background_footer">
+  <div class="transbox_footer">
+  <footer>
+    <p>Brought to you by: Laan(Rainbow) Yeung, Jake Mathahs, Ted Zhu
+    <br><!--<a href="___?___">Submit a review</a> -->| CS50 2015 FALL</p>
+  </footer>
+</div>
+</div>

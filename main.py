@@ -279,7 +279,7 @@ class AboutPage(webapp2.RequestHandler):
         self.response.write(template.render(template_values))
 """
 
-class SearchPage(webapp2.RequestHandler):
+class RecentPage(webapp2.RequestHandler):
     def get(self):
         guestbook_name = self.request.get('guestbook_name',
                                           DEFAULT_GUESTBOOK_NAME)
@@ -302,7 +302,7 @@ class SearchPage(webapp2.RequestHandler):
             'url': url,
             'url_linktext': url_linktext,
         }
-        template= JINJA_ENVIRONMENT.get_template('templates/search.html')
+        template= JINJA_ENVIRONMENT.get_template('templates/recent.html')
         self.response.write(template.render(template_values))
 
 app = webapp2.WSGIApplication([
@@ -312,5 +312,5 @@ app = webapp2.WSGIApplication([
     ('/sign', Guestbook),
     ('/about', AboutPage),
     ('/profile', ProfileHandler),
-    ('/search', SearchPage)
+    ('/recent', RecentPage)
 ], debug=True)
