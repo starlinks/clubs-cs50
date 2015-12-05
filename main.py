@@ -85,23 +85,6 @@ class MainHandler(webapp2.RequestHandler):
         if user:
             self.redirect('/create_profile')
 
-class CreateProfileHandler(webapp2.RequestHandler):
-    def get(self):
-        user = users.get_current_user()
-        template = JINJA_ENVIRONMENT.get_template('templates/profile_form.html')
-        self.response.write(template.render({'user': user,
-                                             'logout_link': users.create_logout_url('/'),
-                                             'nickname': "DEFAULT" if not user else user.nickname(),
-                                             'login_link': users.create_login_url('/')}))
-    def post(self):
-        user = users.get_current_user()
-        person = Person(name = self.request.get('name'),
-                        userID = user.user_id(),
-                        email = user.email(),
-                        year = self.request.get('year'),
-                        bio = self.request.get('bio'))
-        person.put()
-        self.redirect('/home')
 # making a login page integrated with Google accounts.
 # user must log in to view contents.
 
@@ -119,15 +102,12 @@ class MainPage(webapp2.RequestHandler):
             url = users.create_logout_url(self.request.uri)
             url_linktext = 'Logout'
         else:
-            url = users.create_login_url(self.request.uri)
-            url_linktext = 'Login'
+            self.redirect(users.create_login_url(self.request.uri))
 
         template_values = {
             'user': user,
             'greetings': greetings,
             'guestbook_name': urllib.quote_plus(guestbook_name),
-            'url': url,
-            'url_linktext': url_linktext,
         }
 
         template = JINJA_ENVIRONMENT.get_template('templates/index.html')
@@ -142,23 +122,12 @@ class CreateProfileHandler(webapp2.RequestHandler):
                                              'nickname': "DEFAULT" if not user else user.nickname(),
                                              'login_link': users.create_login_url('/')}))
     def post(self):
-        '''user = users.get_current_user()
-        person = Person(name = self.request.get('person_name'),
-                        userID = user.user_id(),
-                        email = user.email(),
-                        year = self.request.get('year'),
-                        bio = self.request.get('bio'))
-        person.put()
-        guestbook_name = self.request.get('guestbook_name',
-                                          DEFAULT_GUESTBOOK_NAME)
-        greeting = Greeting(parent=guestbook_key(guestbook_name))'''
-
-        user= users.get_current_user
+        user = users.get_current_user()
         person = Person(
             name=self.request.get('name'),
-            identity=users.get_current_user().user_id(),
-            userID=users.get_current_user().user_id(),
-            email=users.get_current_user().email(),
+            identity=user.user_id(),
+            userID=user.user_id(),
+            email=user.email(),
             year=self.request.get('year'),
             bio=self.request.get('bio'))
         person.put()
@@ -175,11 +144,11 @@ class Guestbook(webapp2.RequestHandler):
                                           DEFAULT_GUESTBOOK_NAME)
         greeting = Greeting(parent=guestbook_key(guestbook_name))
 
-        '''if users.get_current_user():
+        if users.get_current_user():
             greeting.person = Person(
                     identity=users.get_current_user().user_id(),
                     userID=users.get_current_user().user_id(),
-                    email=users.get_current_user().email()'''
+                    email=users.get_current_user().email())
 
         greeting.name = self.request.get('name')
         greeting.time = self.request.get('time')
@@ -192,21 +161,20 @@ class Guestbook(webapp2.RequestHandler):
         greeting.group4 = int(self.request.get('group4'))
         greeting.put()
 
-        '''query_params = {'guestbook_name': guestbook_name}
-        self.redirect('/?' + urllib.urlencode(query_params))''' #why doesn't this work? It notes the identity
-        self.redirect('/home')
+        query_params = {'guestbook_name': guestbook_name}
+        self.redirect('/?' + urllib.urlencode(query_params)) #why doesn't this work? It notes the identity
 
 class PersonClub(ndb.Model):
     person = ndb.KeyProperty(Person)
     greeting = ndb.KeyProperty(Greeting)
 
 class ProfileHandler(webapp2.RequestHandler):
-    def get(self):
-        '''guestbook_name = self.request.get('guestbook_name',
-                                          DEFAULT_GUESTBOOK_NAME)
-        greetings_query = Greeting.query(
-            ancestor=guestbook_key(guestbook_name)).order(-Greeting.date)
-        greetings = greetings_query.fetch(10)'''
+    '''def get(self):
+        #guestbook_name = self.request.get('guestbook_name',
+        #                                  DEFAULT_GUESTBOOK_NAME)
+        #greetings_query = Greeting.query(
+        #    ancestor=guestbook_key(guestbook_name)).order(-Greeting.date)
+        #greetings = greetings_query.fetch(10)
         #the above is not needed until club entries are added in
         user = users.get_current_user()
         template_values = {'user': user,
@@ -214,7 +182,7 @@ class ProfileHandler(webapp2.RequestHandler):
                            'nickname': "DEFAULT" if not user else user.nickname(),
                            'login_link': users.create_login_url('/')}
         if user:
-            template = JINJA_ENVIRONMENT.get_template('templates/my_profile.html')
+            #template = JINJA_ENVIRONMENT.get_template('templates/my_profile.html')
             current_id = self.request.get('id')
             people = Person.query()
             # logging.info(people)
@@ -242,7 +210,7 @@ class ProfileHandler(webapp2.RequestHandler):
                     template_values['year'] = person.year
                     template_values['bio'] = person.bio
 
-        # template = JINJA_ENVIRONMENT.get_template('templates/my_profile.html')
+        template = JINJA_ENVIRONMENT.get_template('templates/my_profile.html')
         evaluations = PersonClub.query().fetch()
         template_values['results'] = ""
         for evaluation in evaluations:
@@ -255,7 +223,24 @@ class ProfileHandler(webapp2.RequestHandler):
                     greeting_id = str(greeting.key.id())
 
                     template_values['results'] += greeting.name
+        self.response.write(template.render(template_values))'''
+    def get(self):
+        people = Person.query()
+
+        user = users.get_current_user()
+        if user:
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            self.redirect(users.create_login_url(self.request.uri))
+
+        template_values = {
+            'user': user,
+            'people': people,
+        }
+        template= JINJA_ENVIRONMENT.get_template('templates/my_profile.html')
         self.response.write(template.render(template_values))
+
 
 
 class AboutPage(webapp2.RequestHandler):
@@ -313,8 +298,7 @@ class RecentPage(webapp2.RequestHandler):
             url = users.create_logout_url(self.request.uri)
             url_linktext = 'Logout'
         else:
-            url = users.create_login_url(self.request.uri)
-            url_linktext = 'Login'
+            self.redirect(users.create_login_url(self.request.uri))
 
         template_values = {
             'user': user,
@@ -330,6 +314,7 @@ app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/create_profile', CreateProfileHandler),
     ('/home', MainPage),
+    ('/sign', Guestbook),
     ('/about', AboutPage),
     ('/profile', ProfileHandler),
     ('/recent', RecentPage)

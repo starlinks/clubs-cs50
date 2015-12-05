@@ -6,10 +6,11 @@
   </head>
   <body>
     <h1>Recent Entries</h1>
+    <a href="{{ url|safe }}">{{ url_linktext }}</a>
     {% for greeting in greetings %}
-      {% if greeting.author %}
-        <b>{{ greeting.author.email }}
-          {% if user and user.user_id() == greeting.author.identity %}
+      {% if greeting.person %}
+        <b>{{ greeting.person.email }}
+          {% if user and user.user_id() == greeting.person.identity %}
             (You)
           {% endif %}
         </b> evaluated these following clubs on {{greeting.date}}:
