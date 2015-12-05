@@ -4,6 +4,8 @@
  	<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
  	<style>
   	body {
+    color: white;
+    text-align: center;
   	font-family: 'Raleway', sans-serif;
   	background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Harvard_square_harvard_yard.JPG/1920px-Harvard_square_harvard_yard.JPG");
       -webkit-background-size: cover;
@@ -14,18 +16,17 @@
       background-position: right top;
       background-attachment: fixed;
   	}
-
 	div.transbox {
 	  margin: 45px;
-	  background-color: #ffffff;
-	  border: 0.5px solid black;
-	  opacity: 0.6;
+	  background-color: #000000;
+	  border: 0.5px solid white;
+	  opacity: 0.8;
 	  filter: alpha(opacity=60); /* For IE8 and earlier */
 	  padding: 50px;
 	}
 	html *
 	    {
-	    color: #000;
+	    color: white;
 	    font-family: 'Raleway', sans-serif;
 	}
 	div.transbox p {
@@ -41,13 +42,19 @@
 	  filter: alpha(opacity=60); /* For IE8 and earlier */
 	  padding: 20px;
 	}
-
 	div.transbox_footer p {
 	  margin: 3%;
 	  font-weight: bold;
 	  color: #000000;
-	}
+  }
 	</style>
+  <script>
+    function visitPage(){
+        window.location='http://www.example.com';
+    }
+    <button onclick="visitPage();">Visit Page Now</button>
+  </script>
+  <button onclick="visitPage();">Visit Page Now</button>
     <title>Clubs Evaluation Form</title>
 	</head>
 	<body>
@@ -56,7 +63,7 @@
     		<br>
 	  		<h1>Welcome to Clubs@CS50</h1>
 	  		<h3>Enjoy the Q Guide, made for clubs.</h3>
-	  		<h4>{% include 'templates/user.html' %}</h4>
+	  		<h4 <button onclick="visitPage()">{% include 'templates/user.html' %}</h4>
     </div>
   </div>
   </body>

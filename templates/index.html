@@ -14,6 +14,12 @@
       background-position: right top;
       background-attachment: fixed;
     }
+    textarea{
+      font-size: 22px;
+    }
+    #inputs{
+      font-size: 25px;
+    }
     form input[type="text"] {
       height: 28px;
       width: 300px;
@@ -22,7 +28,6 @@
       font-size: 15px;
       border: 1px solid #CCCCCC;
     }
-
     form input[type="submit"] {
       height: 28px;
       width: 80px;
@@ -42,35 +47,96 @@
     }
     html *
     {
-    font-size: 1.01em !important;
-    color: #000 !important;
-    font-family: 'Raleway', sans-serif; !important;
+      color: #000 !important;
+      font-family: 'Raleway', sans-serif; !important;
+    }
+    *::-webkit-input-placeholder {
+        color: crimson;
+        font-size: 18px;
     }
     .header{
+      width: 99%;
+      border-style: outset;
+      text-align: right;
       position: fixed;
       z-index: 3;
-      width: 100%;
-      top: 0%;
-      margin-top: 0;
-      background-color: white;
-      background-color: lightblue;
-      opacity: 1;
+      top: -6%;
+      background-color: #009900;
+      opacity: .97;
       font-weight: bold;
-      color: lightblue;
+      color: green;
+      }
+    .logo{
+      background-color: white
+      text-decoration: none;
+      float: left;
+      font-size: 22px;
+    }
+    li{
+      font-size: 20px;
+      text-decoration: none;
+      color: #FFF;
+      list-style: none;
+      float: left;
+      margin-left: 15px;
+      padding-top: 15px;
+    }
+    .nav{
+      text-align: center;
+    }
+    /* code adapted from http://designshack.net/articles/css/css-button-tutorial-how-to-code-buttons-in-5-simple-steps/ */
+    .button {
+     display: block;
+     height: 40px;
+     width: 300px;
+     background: red;
+     border: 2px solid rgba(33, 68, 72, 0.59);
+    /*Step 2: Basic Button Styles*/
+     display: block;
+     height: 30px;
+     width: 100px;
+     background: #000000;
+     border: 2px solid rgba(33, 68, 72, 0.59);
+     /*Step 3: Text Styles*/
+     color: rgba(0, 0, 200, 0.55);
+     text-align: center;
+     font: bold 18px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+     /*Step 4: Fancy CSS3 Styles*/
+     background: -webkit-linear-gradient(top, #982109, #921841);
+     background: -moz-linear-gradient(top, #34696f, #2f5f63);
+     background: -o-linear-gradient(top, #34696f, #2f5f63);
+     background: -ms-linear-gradient(top, #34696f, #2f5f63);
+     background: linear-gradient(top, #34696f, #2f5f63);
+     -webkit-border-radius: 50px;
+     -khtml-border-radius: 50px;
+     -moz-border-radius: 50px;
+     border-radius: 50px;
+     -webkit-box-shadow: 0 8px 0 #1b383b;
+     -moz-box-shadow: 0 8px 0 #1b383b;
+     box-shadow: 0 8px 0 #1b383b;
+     text-shadow: 0 2px 2px rgba(255, 255, 255, 0.2);
+    }
+    /*Step 3: Link Styles*/
+    a.button2 {
+     text-decoration: none;
+    }
+    /*Step 5: Hover Styles*/
+    a.button:hover {
+     background: #3d7a80;
+     background: -webkit-linear-gradient(top, #3d7a80, #2f5f63);
+     background: -moz-linear-gradient(top, #3d7a80, #2f5f63);
+     background: -o-linear-gradient(top, #3d7a80, #2f5f63);
+     background: -ms-linear-gradient(top, #3d7a80, #2f5f63);
+     background: linear-gradient(top, #3d7a80, #2f5f63);
     }
     #content{
       background-color: #ffffff;
-      margin-top: 100px;
+      margin-top: 150px;
       opacity: 0.8;
-      filter: alpha(opacity=60); /* For IE8 and earlier */
       font-weight: bold;
       color: #000000;
       padding-left: 8px;
       text-align: center;
-    }
-
-    #tfheader{
-      background-color:#c3dfef;
     }
     #tfnewsearch{
       float: right;
@@ -85,7 +151,6 @@
       border-bottom-left-radius: 5px 5px;
     }
     .tfbutton {
-      margin: 0;
       padding: 5px 15px;
       font-family: Arial, Helvetica, sans-serif;
       font-size:14px;
@@ -116,26 +181,35 @@
     }
   </style>
 
-  <!-- Link to let the user login to their account-->
-  <div class="header">
-    <a href="{{ url|safe }}">{{ url_linktext }}</a>
-    <form>Your Identifier:
-      <input value="{{ guestbook_identity }}" name="guestbook_identity">
-      <input type="submit" value="switch">
-    </form>
-    <!-- CSS styles for standard search box -->
-  </head>
-  <body>
-    <div id="tfheader">
-      <form id="tfnewsearch" method="get" action="http://www.google.com">
-        <input type="text" class="tftextinput" name="q" placeholder="Search for a club" size="21" maxlength="120"><input type="submit" value="search" class="tfbutton">
-      </form>
-    <div class="tfclear"></div>
+    <div class="header">
+     <div class="container">
+       <div class="logo">
+         <h1><a href="https://clubs-cs50.appspot.com/home">CS50 CLUBS</h1>
+       </div>
+       <div class="nav">
+         <ul><br>
+           <li><a href="https://clubs-cs50.appspot.com/home" class="button">Home</a></li>
+           <li><a href="https://clubs-cs50.appspot.com/home" class="button">About Us</a></li>
+           <li><a href="https://clubs-cs50.appspot.com/recent" class="button">Recent</a></li>
+           <li><a href="https://clubs-cs50.appspot.com/profile" class="button">My Profile</a></li>
+           <li><a href="{{ url|safe }}" class="button">{{ url_linktext }}</a><li>
+           <br><br>
+         </ul>
+         <!-- Search box for clubs: http://www.textfixer.com/tutorials/html-search-box.php-->
+         <div id="tfheader"><br>
+           <form id="tfnewsearch" method="get" action="http://www.google.com">
+             <input type="text" class="tftextinput" name="q" placeholder="Search for a club" size="21" maxlength="120"><input type="submit" value="search" class="tfbutton">
+           </form><br>
+         <div class="tfclear"></div>
+         </div>
+       </div>
+       </div>
+     </div>
+     <!-- CSS styles for standard search box -->
+    </head>
+    <body>
     </div>
-  </div>
-  <div id="content">
-  <a href="https://clubs-cs50.appspot.com/profile">My Profile</a>
-  <a href="https://clubs-cs50.appspot.com/recent">Recent Entries</a>
+    <div id="content">
     <hr>
     <form id="inputs" action="/sign?guestbook_name={{ guestbook_name }}" method="post">
       <h9>Club Name (Please enter it exactly as it appears in <a href="http://osl.fas.harvard.edu/student-organizations">This Link</a>)</h9>
