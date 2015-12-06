@@ -1,0 +1,9 @@
+This project is essentially meant to be a q-guide for clubs. At first, it will ask you to log in using google's login, and then you will be able to search clubs in our database. Be sure that if you want to search for something, it matches exactly with what you are searching for. This includes being case sensitive. HNMUN for instance, would not work as hnMun.
+Another big part of the project is club evaluations. You can find this part by going through the link in the header. Here you can fill about multiple things about a club you might be evaluating. In the name, be sure that you are typing it in a way that other people can find it.
+However, if you just want to see what has been submitted lately, go to recent submissions. Just follow the link at the top of many pages that says "Recent".
+As a first time user you may also be prompted to create a bio. This bio will be mostly for the user as a reminder for what they are looking for in clubs, and to guide them through the club searching process.
+
+Google Datastore link: https://console.developers.google.com/datastore/query?project=clubs-cs50&authuser=0&namespace=&kind=Author&queryType=KindQuery
+Login Info:
+Username: clubs-cs50@gmail.com Password: CS50Clubs123
+Greetings corresponds to the data table for clubs evaluation forms; Person corresponds to the data table for profile forms; Search corresponds to the searched terms. 
