@@ -49,6 +49,14 @@
       <!-- code adapted from http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_table_insertrow -->
   </head>
   <body>
+    <ul><br>
+      <li><a href="https://clubs-cs50.appspot.com/home" class="button">Home</a></li>
+      <li><a href="https://clubs-cs50.appspot.com/about" class="button">About Us</a></li>
+      <li><a href="https://clubs-cs50.appspot.com/recent" class="button">Recent</a></li>
+      <li><a href="https://clubs-cs50.appspot.com/profile" class="button">My Profile</a></li>
+      <li><a href="https://clubs-cs50.appspot.com/club" class="button">Club Evaluation Form</a></li>
+      <br><br>
+    </ul>
     <h1>Search Results</h1>
     <a href="{{ url|safe }}">{{ url_linktext }}</a>
     <table id="t01">
@@ -61,6 +69,10 @@
               <th>{{greeting.time}}</th>
               <th>{{greeting.rec}}</th>
               <th>{{greeting.other}}</th>
+              <th>{{greeting.group1}}</th>
+              <th>{{greeting.group2}}</th>
+              <th>{{greeting.group3}}</th>
+              <th>{{greeting.group4}}</th>
             {% endif %}
         {% endfor %}
       {% endfor %}</tr>
