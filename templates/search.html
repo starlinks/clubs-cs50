@@ -52,9 +52,8 @@
     <h1>Search Results</h1>
     <a href="{{ url|safe }}">{{ url_linktext }}</a>
     <table id="t01">
-    {% for search in search %}
-      {% for greeting in greetings %}
-        {% if greeting.person %}
+      {% for search in search %}
+        {% for greeting in greetings %}
           <tr>
             {% if search.q == greeting.name %}
               <th>{{greeting.name}}</th>
@@ -63,9 +62,8 @@
               <th>{{greeting.rec}}</th>
               <th>{{greeting.other}}</th>
             {% endif %}
-        {% endif %}
-      {% endfor %}
-    {% endfor %}</tr>
+        {% endfor %}
+      {% endfor %}</tr>
     </table>
     <br>
   </body>

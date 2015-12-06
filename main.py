@@ -246,7 +246,7 @@ class SearchPage(webapp2.RequestHandler):
             ancestor=guestbook_key(guestbook_name)).order(-Greeting.date)
         greetings = greetings_query.fetch(100)
 
-        search = Search.query()
+        search = Search.query().order(-Search.date).fetch(1)
 
         user = users.get_current_user()
         if user:
