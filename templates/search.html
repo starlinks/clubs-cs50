@@ -52,47 +52,22 @@
     <h1>Search Results</h1>
     <a href="{{ url|safe }}">{{ url_linktext }}</a>
     <table id="t01">
-    {% for greeting in greetings %}
-      {% if greeting.person %}
-        <tr><th>{{ greeting.person.email }}
-          <th>{{q}}</th>
-          {% if q == greeting.name %}
-            <th>{{greeting.name}}</th>
-            <th>{{greeting.place}}</th>
-            <th>{{greeting.time}}</th>
-            <th>{{greeting.rec}}</th>
-            <th>getQueryVariable()</th>
-            <th>{{greeting.other}}</th>
-          {% endif %}
-      {% endif %}
+    {% for search in search %}
+      {% for greeting in greetings %}
+        {% if greeting.person %}
+          <tr>
+            {% if search.q == greeting.name %}
+              <th>{{greeting.name}}</th>
+              <th>{{greeting.place}}</th>
+              <th>{{greeting.time}}</th>
+              <th>{{greeting.rec}}</th>
+              <th>{{greeting.other}}</th>
+            {% endif %}
+        {% endif %}
+      {% endfor %}
     {% endfor %}</tr>
     </table>
     <br>
-    <button type="button" onclick="getQueryVariable">Try it</button>
-    <script>
-      function getQueryVariable(variable) {
-      var query = window.location.search.substring(1);
-      var vars = query.split('&');
-      for (var i = 0; i < vars.length; i++) {
-          var pair = vars[i].split('=');
-          if (decodeURIComponent(pair[0]) == variable) {
-              return decodeURIComponent(pair[1]);
-          }
-      }
-      console.log('Query variable %s not found', variable);
-      }
-      function myFunction() {
-         var table = document.getElementById("myTable");
-         var row = table.insertRow(0);
-         var cell1 = row.insertCell(0);
-         var cell2 = row.insertCell(1);
-         cell1.innerHTML = "Rainbow needs to link backend here, but this table will daynamically size";
-         cell2.innerHTML = "NEW CELL2";
-         cell3.innerHTML = "3";
-         cell4.innerHTML = "4";
-         cell5.innerHTML = "5";
-      }
-    </script>
   </body>
   <footer>
   </footer>

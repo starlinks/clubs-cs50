@@ -1,20 +1,45 @@
 <!DOCTYPE.html>
 <html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="/static/mastercss.css">
-    <title>Create New Events</title>
-  </head>
-  <body>
-    {% include 'templates/user.html' %}
-    <h1><a href='/' style="color:black; text-decoration: none">Clubs @ CS50</a></h1>
-    <br>
-    <form method = "post">
-      <pre>
-      Enter your preferred name <input type="text" name="name">
-      Enter your class year <input type="text" name="year">
-      <textarea name="bio" rows="10" cols="51"> Enter a short bio here. </textarea>
-      <input type = "submit">
-    </pre>
-    </form>
-  </body>
+  <head>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <title>Create New User</title>
+    <style>
+      body{
+        margin: 0;
+        background-image: url("http://images.freeimages.com/images/thumbs/239/brooklyn-bridge-2-1170781.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: right top;
+        background-attachment: fixed;
+      }
+      html * {
+        color: #000 !important;
+        font-family: 'Raleway', sans-serif; !important;
+      }
+      #content{
+        background-color: #ffffff;
+        margin-top: 150px;
+        opacity: 0.8;
+        font-weight: bold;
+        color: #000000;
+        padding-left: 8px;
+        text-align: center;
+      }
+      </style>
+  </head>
+  <body>
+    {% include 'templates/user.html' %}
+    <h1><a href='/' style="color:black; text-decoration: none">Clubs @ CS50</a></h1>
+    <br>
+    <div id="content">
+    <form method = "post">
+      <pre>
+      Enter your preferred name <input type="text" name="name">
+      Enter your class year <input type="text" name="year">
+      <textarea name="bio" rows="10" cols="51"> Enter a short bio here. </textarea>
+      <input type = "submit">
+    </pre>
+    </form>
+  </div>
+  </body>
 </html>

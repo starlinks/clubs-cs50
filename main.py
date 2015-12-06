@@ -101,8 +101,6 @@ class MainPage(webapp2.RequestHandler):
             ancestor=guestbook_key(guestbook_name)).order(-Greeting.date)
         greetings = greetings_query.fetch(10)
 
-        q = self.request.get('q')
-
         user = users.get_current_user()
         if user:
             url = users.create_logout_url(self.request.uri)
@@ -170,66 +168,7 @@ class Guestbook(webapp2.RequestHandler):
         query_params = {'guestbook_name': guestbook_name}
         self.redirect('/?' + urllib.urlencode(query_params))
 
-class PersonClub(ndb.Model):
-    person = ndb.KeyProperty(Person)
-    greeting = ndb.KeyProperty(Greeting)
-
 class ProfileHandler(webapp2.RequestHandler):
-    '''def get(self):
-        #guestbook_name = self.request.get('guestbook_name',
-        #                                  DEFAULT_GUESTBOOK_NAME)
-        #greetings_query = Greeting.query(
-        #    ancestor=guestbook_key(guestbook_name)).order(-Greeting.date)
-        #greetings = greetings_query.fetch(10)
-        #the above is not needed until club entries are added in
-        user = users.get_current_user()
-        template_values = {'user': user,
-                           'logout_link': users.create_logout_url('/'),
-                           'nickname': "DEFAULT" if not user else user.nickname(),
-                           'login_link': users.create_login_url('/')}
-        if user:
-            #template = JINJA_ENVIRONMENT.get_template('templates/my_profile.html')
-            current_id = self.request.get('id')
-            people = Person.query()
-            # logging.info(people)
-            for person in people:
-                if person.userID == user.user_id():
-                    template_values['name'] = person.name
-                    template_values['year'] = person.year
-                    template_values['email'] = person.email
-                    template_values['bio'] = person.bio
-                    break
-            if current_id != "":
-                person_key = None
-
-                for person in people:
-                    logging.info(person.userID)
-                    logging.info(current_id)
-                    if person.userID == current_id:
-                        logging.info("==============heyo it's a match")
-                        person_key = person.key
-                        break
-                if person_key:
-                    person = person_key.get()
-                    template_values['name'] = person.name
-                    template_values['email'] = person.email    #user.email()
-                    template_values['year'] = person.year
-                    template_values['bio'] = person.bio
-
-        template = JINJA_ENVIRONMENT.get_template('templates/my_profile.html')
-        evaluations = PersonClub.query().fetch()
-        template_values['results'] = ""
-        for evaluation in evaluations:
-            if evaluation and evaluation.person and evaluation.person.get():
-                logging.info(evaluation.person.get().name)
-                logging.info(template_values['name'])
-            if evaluation and evaluation.person and evaluation.person.get():
-                if evaluation.person.get().name == template_values['name']:
-                    greeting = evluation.greeting.get()
-                    greeting_id = str(greeting.key.id())
-
-                    template_values['results'] += greeting.name
-        self.response.write(template.render(template_values))'''
     def get(self):
         people = Person.query()
 
@@ -247,6 +186,21 @@ class ProfileHandler(webapp2.RequestHandler):
         template= JINJA_ENVIRONMENT.get_template('templates/my_profile.html')
         self.response.write(template.render(template_values))
 
+class SearchFormHandler(webapp2.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+        template = JINJA_ENVIRONMENT.get_template('templates/search_input.html')
+        self.response.write(template.render({'user': user,
+                                             'logout_link': users.create_logout_url('/'),
+                                             'nickname': "DEFAULT" if not user else user.nickname(),
+                                             'login_link': users.create_login_url('/')}))
+
+    def post(self):
+        user = users.get_current_user()
+        search = Search(
+            q=self.request.get('q'))
+        search.put()
+        self.redirect('/search')
 
 
 class AboutPage(webapp2.RequestHandler):
@@ -258,38 +212,6 @@ class AboutPage(webapp2.RequestHandler):
             }
             template= JINJA_ENVIRONMENT.get_template('templates/about.html')
             self.response.write(template.render(template_values))
-
-# https://cloud.google.com/appengine/docs/python/search/faceted_search
-"""class IndexPage(webapp2.RequestHandler):
-    '''def put(self):
-        doc = search.Document(doc_id='doc1', fields=[search.AtomField(name='name', value='x86')],
-            facets = [search.AtomFacet(name='type', value='CS50')])
-        index = search.Greeting(name='products', namespace='')
-        index.put(doc)'''
-    def get(self):
-        guestbook_name = self.request.get('guestbook_name',
-                                          DEFAULT_GUESTBOOK_NAME)
-        greeting1 = Greeting(parent=guestbook_key(guestbook_name)
-        Greeting.query(ancestor=guestbook_key(guestbook_name)).fetch()
-
-        user = users.get_current_user()
-        if user:
-            url = users.create_logout_url(self.request.uri)
-            url_linktext = 'Logout'
-        else:
-            url = users.create_login_url(self.request.uri)
-            url_linktext = 'Login'
-
-        template_values = {
-            'user': user,
-            'greetings': greetings,
-            'guestbook_name': urllib.quote_plus(guestbook_name),
-            'url': url,
-            'url_linktext': url_linktext,
-        }
-        template= JINJA_ENVIRONMENT.get_template('templates/search.html')
-        self.response.write(template.render(template_values))
-"""
 
 class RecentPage(webapp2.RequestHandler):
     def get(self):
@@ -324,8 +246,7 @@ class SearchPage(webapp2.RequestHandler):
             ancestor=guestbook_key(guestbook_name)).order(-Greeting.date)
         greetings = greetings_query.fetch(100)
 
-        q = self.request.get('q')
-        search = Search.query().order(-Search.date).fetch(1)
+        search = Search.query()
 
         user = users.get_current_user()
         if user:
@@ -336,11 +257,9 @@ class SearchPage(webapp2.RequestHandler):
 
         template_values = {
             'user': user,
+            'search': search,
             'greetings': greetings,
-            'search' : search,
             'guestbook_name': urllib.quote_plus(guestbook_name),
-            'url': url,
-            'url_linktext': url_linktext,
         }
         template= JINJA_ENVIRONMENT.get_template('templates/search.html')
         self.response.write(template.render(template_values))
@@ -348,9 +267,10 @@ class SearchPage(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/create_profile', CreateProfileHandler),
-    ('/home', MainPage),
+    ('/club', MainPage),
     ('/sign', Guestbook),
     ('/about', AboutPage),
+    ('/home', SearchFormHandler),
     ('/profile', ProfileHandler),
     ('/search', SearchPage),
     ('/recent', RecentPage)
