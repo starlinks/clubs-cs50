@@ -16,41 +16,212 @@
       textarea{
         font-size: 22px;
       }
+      #rece{
+        background-color: lightblue;
+        margin-left: 35%;
+        margin-right: 35%;
+        width: 20%;
+        margin-top:13%;
+        text-align: center;
+      }
       html *
       {
         font-family: 'Raleway', sans-serif; !important;
       }
       table {
-      text-align: center;
-      margin-top: 15%;
-      width:80%;
-      margin-left: 10%;
-      margin-right: 10%;
+        text-align: center;
+        margin-top: 15%;
+        width:80%;
+        margin-left: 10%;
+        margin-right: 10%;
       }
       table, th, td {
-          border: 1px solid black;
-          border-collapse: collapse;
+        border: 1px solid black;
+        border-collapse: collapse;
       }
       th, td {
-          padding: 5px;
-          text-align: left;
+        padding: 5px;
+        text-align: left;
       }
       table#t01 tr:nth-child(even) {
-          background-color: #eee;
+        background-color: white;
       }
       table#t01 tr:nth-child(odd) {
-         background-color:#fff;
+        background-color:#fff;
       }
       table#t01 th	{
-          background-color: black;
-          color: white;
+        background-color: black;
+        color: white;
       }
-      </style>
+      .header{
+        width: 99%;
+        border-style: outset;
+        text-align: right;
+        position: fixed;
+        z-index: 3;
+        top: -6%;
+        background-color: #009900;
+        opacity: .97;
+        font-weight: bold;
+        color: green;
+        }
+      .logo{
+        background-color: white
+        text-decoration: none;
+        float: left;
+        font-size: 22px;
+      }
+      li{
+        font-size: 20px;
+        text-decoration: none;
+        color: #FFF;
+        list-style: none;
+        float: left;
+        margin-left: 15px;
+        padding-top: 15px;
+      }
+      .nav{
+        text-align: center;
+      }
+      #top{
+        font-size: 30px;
+        color: purple;
+        text-align: center;
+        width: 80%;
+        background-color: gold;
+        margin-top: 100px;
+      }
+      table{
+        border-collapse: collapse;
+        border-color: white;
+        background-color: white;
+      }
+      /* code adapted from http://designshack.net/articles/css/css-button-tutorial-how-to-code-buttons-in-5-simple-steps/ */
+      .button {
+       display: block;
+       height: 40px;
+       width: 300px;
+       background: red;
+       border: 2px solid rgba(33, 68, 72, 0.59);
+      /*Step 2: Basic Button Styles*/
+       display: block;
+       height: 30px;
+       width: 100px;
+       background: #000000;
+       border: 2px solid rgba(33, 68, 72, 0.59);
+       /*Step 3: Text Styles*/
+       color: rgba(0, 0, 200, 0.55);
+       text-align: center;
+       font: bold 18px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+       /*Step 4: Fancy CSS3 Styles*/
+       background: -webkit-linear-gradient(top, #982109, #921841);
+       background: -moz-linear-gradient(top, #34696f, #2f5f63);
+       background: -o-linear-gradient(top, #34696f, #2f5f63);
+       background: -ms-linear-gradient(top, #34696f, #2f5f63);
+       background: linear-gradient(top, #34696f, #2f5f63);
+       -webkit-border-radius: 50px;
+       -khtml-border-radius: 50px;
+       -moz-border-radius: 50px;
+       border-radius: 50px;
+       -webkit-box-shadow: 0 8px 0 #1b383b;
+       -moz-box-shadow: 0 8px 0 #1b383b;
+       box-shadow: 0 8px 0 #1b383b;
+       text-shadow: 0 2px 2px rgba(255, 255, 255, 0.2);
+      }
+      /*Step 3: Link Styles*/
+      a.button2 {
+       text-decoration: none;
+      }
+      /*Step 5: Hover Styles*/
+      a.button:hover {
+       background: #3d7a80;
+       background: -webkit-linear-gradient(top, #3d7a80, #2f5f63);
+       background: -moz-linear-gradient(top, #3d7a80, #2f5f63);
+       background: -o-linear-gradient(top, #3d7a80, #2f5f63);
+       background: -ms-linear-gradient(top, #3d7a80, #2f5f63);
+       background: linear-gradient(top, #3d7a80, #2f5f63);
+      }
+      #content{
+        background-color: #ffffff;
+        margin-top: 150px;
+        opacity: 0.8;
+        font-weight: bold;
+        color: #000000;
+        padding-left: 8px;
+        text-align: center;
+      }
+      #tfnewsearch{
+        float: right;
+      }
+      .tftextinput{
+        margin: 0;
+        padding: 5px 15px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size:14px;
+        border:1px solid #0076a3; border-right:0px;
+        border-top-left-radius: 5px 5px;
+        border-bottom-left-radius: 5px 5px;
+      }
+      .tfbutton {
+        padding: 5px 15px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size:14px;
+        outline: none;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        border: solid 1px #0076a3; border-right:0px;
+        background: #0095cd;
+        background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+        background: -moz-linear-gradient(top,  #00adee,  #0078a5);
+        border-top-right-radius: 5px 5px;
+        border-bottom-right-radius: 5px 5px;
+      }
+      .tfbutton:hover {
+        text-decoration: none;
+        background: #007ead;
+        background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
+        background: -moz-linear-gradient(top,  #0095cc,  #00678e);
+      }
+      /* Fixes submit button height problem in Firefox */
+      .tfbutton::-moz-focus-inner {
+        border: 0;
+      }
+      .tfclear{
+        clear:both;
+      }
+    </style>
+
+      <div class="header">
+       <div class="container">
+         <div class="logo">
+           <h1><a href="https://clubs-cs50.appspot.com/home">CS50 CLUBS</h1>
+         </div>
+         <div class="nav">
+           <ul><br>
+             <li><a href="https://clubs-cs50.appspot.com/home" class="button">Home</a></li>
+             <li><a href="https://clubs-cs50.appspot.com/about" class="button">About Us</a></li>
+             <li><a href="https://clubs-cs50.appspot.com/recent" class="button">Recent</a></li>
+             <li><a href="https://clubs-cs50.appspot.com/profile" class="button">My Profile</a></li>
+             <li><a href="https://clubs-cs50.appspot.com/club" class="button">Club Eval.</a></li>
+             <br><br>
+           </ul>
+           <!-- Search box for clubs: http://www.textfixer.com/tutorials/html-search-box.php-->
+
+           </div>
+         </div>
+         </div>
+       </div>
+       <!-- CSS styles for standard search box -->
+      </head>
+      <body>
+      </div>
       <!-- code adapted from http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_table_insertrow -->
   </head>
   <body>
-    <h1>Recent Entries</h1>
-    <a href="{{ url|safe }}">{{ url_linktext }}</a>
+    <h1 id="rece">Here Are Recent Entries On Our Site<br>
+    <a href="{{ url|safe }}">{{ url_linktext }}</a></h1>
     <table id="t01">
     {% for greeting in greetings %}
       {% if greeting.person %}
@@ -62,11 +233,11 @@
       {% else %}
         <th>An anonymous person evaluated these following clubs: </th>
       {% endif %}
-      <th>{{greeting.name}}</th>
-      <th>{{greeting.place}}</th>
-      <th>{{greeting.time}}</th>
-      <th>{{greeting.rec}}</th>
-      <th>{{greeting.other}}</th></tr>
+        <th>{{greeting.name}}</th>
+        <th>{{greeting.place}}</th>
+        <th>{{greeting.time}}</th>
+        <th>{{greeting.rec}}</th>
+        <th>{{greeting.other}}</th></tr>
     {% endfor %}
     </table>
     <br>

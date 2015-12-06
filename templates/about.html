@@ -23,7 +23,7 @@
     margin: 45px;
     background-color: #ffffff;
     border: 1px solid black;
-    opacity: 0.6;
+    opacity: 0.8;
     filter: alpha(opacity=60);
     padding: 45px;
   }
@@ -45,7 +45,176 @@
     font-weight: bold;
     color: #000000;
   }
-  </style>
+  .header{
+    width: 99%;
+    border-style: outset;
+    text-align: right;
+    position: fixed;
+    z-index: 3;
+    top: -6%;
+    background-color: #009900;
+    opacity: .97;
+    font-weight: bold;
+    color: green;
+    }
+  .logo{
+    background-color: white
+    text-decoration: none;
+    float: left;
+    font-size: 22px;
+  }
+
+  #cool{
+    margin-top: 20%;
+    font-size: 20px;
+    text-align: center;
+    background-color: purple;
+    width 35%;
+    margin-left: 32.5%;
+    margin-right: 32.5%;
+    color: gold;
+    opacity: .8;
+
+  }
+  li{
+    font-size: 20px;
+    text-decoration: none;
+    color: #FFF;
+    list-style: none;
+    float: left;
+    margin-left: 15px;
+    padding-top: 15px;
+  }
+  .nav{
+    text-align: center;
+  }
+  /* code adapted from http://designshack.net/articles/css/css-button-tutorial-how-to-code-buttons-in-5-simple-steps/ */
+  .button {
+   display: block;
+   height: 40px;
+   width: 300px;
+   background: red;
+   border: 2px solid rgba(33, 68, 72, 0.59);
+  /*Step 2: Basic Button Styles*/
+   display: block;
+   height: 30px;
+   width: 100px;
+   background: #000000;
+   border: 2px solid rgba(33, 68, 72, 0.59);
+   /*Step 3: Text Styles*/
+   color: rgba(0, 0, 200, 0.55);
+   text-align: center;
+   font: bold 18px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+   /*Step 4: Fancy CSS3 Styles*/
+   background: -webkit-linear-gradient(top, #982109, #921841);
+   background: -moz-linear-gradient(top, #34696f, #2f5f63);
+   background: -o-linear-gradient(top, #34696f, #2f5f63);
+   background: -ms-linear-gradient(top, #34696f, #2f5f63);
+   background: linear-gradient(top, #34696f, #2f5f63);
+   -webkit-border-radius: 50px;
+   -khtml-border-radius: 50px;
+   -moz-border-radius: 50px;
+   border-radius: 50px;
+   -webkit-box-shadow: 0 8px 0 #1b383b;
+   -moz-box-shadow: 0 8px 0 #1b383b;
+   box-shadow: 0 8px 0 #1b383b;
+   text-shadow: 0 2px 2px rgba(255, 255, 255, 0.2);
+  }
+  /*Step 3: Link Styles*/
+  a.button2 {
+   text-decoration: none;
+  }
+  /*Step 5: Hover Styles*/
+  a.button:hover {
+   background: #3d7a80;
+   background: -webkit-linear-gradient(top, #3d7a80, #2f5f63);
+   background: -moz-linear-gradient(top, #3d7a80, #2f5f63);
+   background: -o-linear-gradient(top, #3d7a80, #2f5f63);
+   background: -ms-linear-gradient(top, #3d7a80, #2f5f63);
+   background: linear-gradient(top, #3d7a80, #2f5f63);
+  }
+  #content{
+    background-color: #ffffff;
+    margin-top: 150px;
+    opacity: 0.8;
+    font-weight: bold;
+    color: #000000;
+    padding-left: 8px;
+    text-align: center;
+  }
+  #tfnewsearch{
+    float: right;
+  }
+  .tftextinput{
+    margin: 0;
+    padding: 5px 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:14px;
+    border:1px solid #0076a3; border-right:0px;
+    border-top-left-radius: 5px 5px;
+    border-bottom-left-radius: 5px 5px;
+  }
+  .tfbutton {
+    padding: 5px 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:14px;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    border: solid 1px #0076a3; border-right:0px;
+    background: #0095cd;
+    background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+    background: -moz-linear-gradient(top,  #00adee,  #0078a5);
+    border-top-right-radius: 5px 5px;
+    border-bottom-right-radius: 5px 5px;
+  }
+  .tfbutton:hover {
+    text-decoration: none;
+    background: #007ead;
+    background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
+    background: -moz-linear-gradient(top,  #0095cc,  #00678e);
+  }
+  /* Fixes submit button height problem in Firefox */
+  .tfbutton::-moz-focus-inner {
+    border: 0;
+  }
+  .tfclear{
+    clear:both;
+  }
+</style>
+
+  <div class="header">
+   <div class="container">
+     <div class="logo">
+       <h1><a href="https://clubs-cs50.appspot.com/home">CS50 CLUBS</h1>
+     </div>
+     <div class="nav">
+       <ul><br>
+         <li><a href="https://clubs-cs50.appspot.com/home" class="button">Home</a></li>
+         <li><a href="https://clubs-cs50.appspot.com/about" class="button">About Us</a></li>
+         <li><a href="https://clubs-cs50.appspot.com/recent" class="button">Recent</a></li>
+         <li><a href="https://clubs-cs50.appspot.com/profile" class="button">My Profile</a></li>
+         <li><a href="https://clubs-cs50.appspot.com/club" class="button">Club Eval.</a></li>
+         <br><br>
+       </ul>
+       <!-- Search box for clubs: http://www.textfixer.com/tutorials/html-search-box.php-->
+       <!--<div id="tfheader"><br>
+         <form id="tfnewsearch" action="/search?q={{q}}">
+           <div><textarea class="tftextinput" name="q" placeholder="search for club evluations" rows="2" cols="60"></textarea></div>
+           <input type="submit" value="Submit">
+         </form><br>-->
+       <div class="tfclear"></div>
+       </div>
+     </div>
+     </div>
+   </div>
+   <!-- CSS styles for standard search box -->
+  </head>
+  <body>
+  </div>
+</head>
 <title>About</title>
 </head>
 <body>
@@ -61,9 +230,9 @@
 		<h3 class="center">Project info</h3>
  		<p>Team members:</p>
  		<ul>
- 			<li>Laan (Rainbow) Yeung: Backend: Python programming for all pages </li>
- 			<li>Jake Mathahs: Frontend: CSS and Javascript for all pages </li>
- 			<li>Ted Zhu: About Page </li>
+ 			<h5>Laan (Rainbow) Yeung: Backend: Most of Python Programming. Frontend: Some CSS and HTML. </h5>
+ 			<h5>Jake Mathahs: Frontend: HTML, CSS, and Javascript for most pages. Little Backend Python. </h5>
+ 			<h5>Ted Zhu: About Page. </h5>
  		<!--{% for tm in team_members %}
  		<li>{{tm}}</li>
  		{% endfor %}-->
