@@ -223,6 +223,15 @@
     <h1 id="rece">Here Are Recent Entries On Our Site<br>
     <a href="{{ url|safe }}">{{ url_linktext }}</a></h1>
     <table id="t01">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Meeting Time</th>
+          <th>Meeting Place</th>
+          <th>Reccommend to Whom?</th>
+          <th>Comments</th>
+        </tr>
+      </thead>
     {% for greeting in greetings %}
       {% if greeting.person %}
         <tr><th>{{ greeting.person.email }}

@@ -232,8 +232,6 @@ class RecentPage(webapp2.RequestHandler):
             'user': user,
             'greetings': greetings,
             'guestbook_name': urllib.quote_plus(guestbook_name),
-            'url': url,
-            'url_linktext': url_linktext,
         }
         template= JINJA_ENVIRONMENT.get_template('templates/recent.html')
         self.response.write(template.render(template_values))

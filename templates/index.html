@@ -212,6 +212,7 @@
     </div>
     <div id="content">
     <hr>
+    <form id="inputs" action="/sign?guestbook_name={{ guestbook_name }}" method="post">
       <a href="{{ url|safe }}">{{ url_linktext }}</a>
       <h9>Club Name (Please enter it exactly as it appears in <a href="http://osl.fas.harvard.edu/student-organizations">This Link</a>)</h9>
       <div><textarea name="name" placeholder="Mock Trial" rows="2" cols="60"></textarea></div>
