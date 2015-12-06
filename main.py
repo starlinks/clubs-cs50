@@ -53,6 +53,10 @@ class Person(ndb.Model):
     year = ndb.StringProperty()
     bio = ndb.TextProperty()
 
+class Search(ndb.Model):
+    q = ndb.StringProperty()
+    date = ndb.DateTimeProperty(auto_now_add=True)
+
 # reference link: https://cloud.google.com/appengine/docs/python/ndb/properties
 class Greeting(ndb.Model):
     """A main model for representing an individual Guestbook entry."""
@@ -96,6 +100,8 @@ class MainPage(webapp2.RequestHandler):
         greetings_query = Greeting.query(
             ancestor=guestbook_key(guestbook_name)).order(-Greeting.date)
         greetings = greetings_query.fetch(10)
+
+        q = self.request.get('q')
 
         user = users.get_current_user()
         if user:
@@ -162,7 +168,7 @@ class Guestbook(webapp2.RequestHandler):
         greeting.put()
 
         query_params = {'guestbook_name': guestbook_name}
-        self.redirect('/?' + urllib.urlencode(query_params)) #why doesn't this work? It notes the identity
+        self.redirect('/?' + urllib.urlencode(query_params))
 
 class PersonClub(ndb.Model):
     person = ndb.KeyProperty(Person)
@@ -310,6 +316,35 @@ class RecentPage(webapp2.RequestHandler):
         template= JINJA_ENVIRONMENT.get_template('templates/recent.html')
         self.response.write(template.render(template_values))
 
+class SearchPage(webapp2.RequestHandler):
+    def get(self):
+        guestbook_name = self.request.get('guestbook_name',
+                                          DEFAULT_GUESTBOOK_NAME)
+        greetings_query = Greeting.query(
+            ancestor=guestbook_key(guestbook_name)).order(-Greeting.date)
+        greetings = greetings_query.fetch(100)
+
+        q = self.request.get('q')
+        search = Search.query().order(-Search.date).fetch(1)
+
+        user = users.get_current_user()
+        if user:
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            self.redirect(users.create_login_url(self.request.uri))
+
+        template_values = {
+            'user': user,
+            'greetings': greetings,
+            'search' : search,
+            'guestbook_name': urllib.quote_plus(guestbook_name),
+            'url': url,
+            'url_linktext': url_linktext,
+        }
+        template= JINJA_ENVIRONMENT.get_template('templates/search.html')
+        self.response.write(template.render(template_values))
+
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/create_profile', CreateProfileHandler),
@@ -317,5 +352,6 @@ app = webapp2.WSGIApplication([
     ('/sign', Guestbook),
     ('/about', AboutPage),
     ('/profile', ProfileHandler),
+    ('/search', SearchPage),
     ('/recent', RecentPage)
 ], debug=True)

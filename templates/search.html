@@ -1,0 +1,100 @@
+<!DOCTYPE.html>
+{%autoescape true %}
+<html>
+  <head>
+    <title>Recent Entries</title>
+    <style>
+      body{
+        margin: 0;
+        background-image: url("http://images.freeimages.com/images/thumbs/239/brooklyn-bridge-2-1170781.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: right top;
+        background-attachment: fixed;
+        color: black;
+      }
+      textarea{
+        font-size: 22px;
+      }
+      html *
+      {
+        font-family: 'Raleway', sans-serif; !important;
+      }
+      table {
+      text-align: center;
+      margin-top: 15%;
+      width:80%;
+      margin-left: 10%;
+      margin-right: 10%;
+      }
+      table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+      }
+      th, td {
+          padding: 5px;
+          text-align: left;
+      }
+      table#t01 tr:nth-child(even) {
+          background-color: #eee;
+      }
+      table#t01 tr:nth-child(odd) {
+         background-color:#fff;
+      }
+      table#t01 th	{
+          background-color: black;
+          color: white;
+      }
+      </style>
+      <!-- code adapted from http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_table_insertrow -->
+  </head>
+  <body>
+    <h1>Search Results</h1>
+    <a href="{{ url|safe }}">{{ url_linktext }}</a>
+    <table id="t01">
+    {% for greeting in greetings %}
+      {% if greeting.person %}
+        <tr><th>{{ greeting.person.email }}
+          <th>{{q}}</th>
+          {% if q == greeting.name %}
+            <th>{{greeting.name}}</th>
+            <th>{{greeting.place}}</th>
+            <th>{{greeting.time}}</th>
+            <th>{{greeting.rec}}</th>
+            <th>getQueryVariable()</th>
+            <th>{{greeting.other}}</th>
+          {% endif %}
+      {% endif %}
+    {% endfor %}</tr>
+    </table>
+    <br>
+    <button type="button" onclick="getQueryVariable">Try it</button>
+    <script>
+      function getQueryVariable(variable) {
+      var query = window.location.search.substring(1);
+      var vars = query.split('&');
+      for (var i = 0; i < vars.length; i++) {
+          var pair = vars[i].split('=');
+          if (decodeURIComponent(pair[0]) == variable) {
+              return decodeURIComponent(pair[1]);
+          }
+      }
+      console.log('Query variable %s not found', variable);
+      }
+      function myFunction() {
+         var table = document.getElementById("myTable");
+         var row = table.insertRow(0);
+         var cell1 = row.insertCell(0);
+         var cell2 = row.insertCell(1);
+         cell1.innerHTML = "Rainbow needs to link backend here, but this table will daynamically size";
+         cell2.innerHTML = "NEW CELL2";
+         cell3.innerHTML = "3";
+         cell4.innerHTML = "4";
+         cell5.innerHTML = "5";
+      }
+    </script>
+  </body>
+  <footer>
+  </footer>
+  </html>
+{% endautoescape %}
